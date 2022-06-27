@@ -1,61 +1,29 @@
-#### Props
+# Meme generator
 
-- props refers to the properties being passed into a component in order for it to work properly. A componeny receiving props is not allowed to modify those props. (they are immutable)
+**This is an exercise which is a part of ![React Course - Beginner's Tutorial for React JavaScript Library [2022]](https://www.youtube.com/watch?v=bMknfKXIFA8&t=31577s)**
 
-### State 
+![overview](./public/img/overview.png)
 
-- State refers to values that are managed by the component, similar to variables declared inside a function.
+#### This project is a meme generator - which generates a random meme gif and allows the user to insert text suitable to the meme.
 
-### useState()
+## Goal of this exercise: 
 
-- Is a method in React in order to update state. React doesn't watch when variables change, therefore, we need to update it.
+- Have a good grasp of how conditional rendering works (&&, if... else statement, ternary operator)
 
-```
-export default function App() {
-    const result = React.useState("Yes") // value passed inside () is default value
-    // => ["Yes", f()]
-    return(
-        <h1>{result[0]}</h1> 
-    )
-}
-```
+- Settings state from child components
 
-#### useSate in Array
+- React forms, form inputs , form state , controlled inputs practice 
 
-- If you need old value/ initial value of the state to determine a new value that is updated in State, you should use a callback function.
+## Technologies used: HTML, CSS, JavaScript, React
+
+## How to run this project in your local laptop/computer:
 
 ```
-setCount(prevCount => prevCount + 1)
-```
+cd meme-generator (root folder)
 
-## Passing data to components
+npm install 
 
-- tobe able to share same data between 2 custom components, you need to move shared state 1 level 
+npm start 
 
-![passing data to components](./public/img/data%20in%20components.png)
 
 ```
-//in App() (grandparent component)
-function App() {
-    <header >
-       <Nav user="Joe"/>
-       <Body user="Joe"/>
-    </header>
-}
-
-//in Nav
-function Nav(props) {
-    <nav user={props.user}>
-
-    </nav>
-
-    //in Body
-function Nav(props) {
-    <body user={props.user}>
-
-    </body>
-}
-
-```
-
-**Rule of thumb: keep state closely tight to component/components that need it**
