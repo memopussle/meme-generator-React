@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+#### Props
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- props refers to the properties being passed into a component in order for it to work properly. A componeny receiving props is not allowed to modify those props. (they are immutable)
 
-## Available Scripts
+### State 
 
-In the project directory, you can run:
+- State refers to values that are managed by the component, similar to variables declared inside a function.
 
-### `npm start`
+### useState()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Is a method in React in order to update state. React doesn't watch when variables change, therefore, we need to update it.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+export default function App() {
+    const result = React.useState("Yes") // value passed inside () is default value
+    // => ["Yes", f()]
+    return(
+        <h1>{result[0]}</h1> 
+    )
+}
+```
 
-### `npm test`
+#### useSate in Array
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- If you need old value/ initial value of the state to determine a new value that is updated in State, you should use a callback function.
 
-### `npm run build`
+```
+setCount(prevCount => prevCount + 1)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Passing data to components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- tobe able to share same data between 2 custom components, you need to move shared state 1 level 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![passing data to components](./public/img/data%20in%20components.png)
 
-### `npm run eject`
+```
+//in App() (grandparent component)
+function App() {
+    <header >
+       <Nav user="Joe"/>
+       <Body user="Joe"/>
+    </header>
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+//in Nav
+function Nav(props) {
+    <nav user={props.user}>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    </nav>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    //in Body
+function Nav(props) {
+    <body user={props.user}>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    </body>
+}
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Rule of thumb: keep state closely tight to component/components that need it**

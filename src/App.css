@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
+
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
   }
+
+
+
+.troll-face {
+  background-image: url(../public/img/TrollFace.svg);
+  background-size: 30%;
+ height:7rem;
+ width: 20rem;
+ background-repeat: no-repeat;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: linear-gradient(90deg,#700e94 1.18%, #b139dd 100%);
   color: white;
+  padding: 15px 20px;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+main{
+  padding:30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form {
+  display: grid;
+  grid-template: 40px 40px / 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+.form--button {
+grid-column: 1 / span 2;
+ background: linear-gradient(90deg,#700e94 1.18%, #b139dd 100%);
+ border:none;
+ cursor: pointer;
+ border-radius: 10px;
+ color: white;
+}
+
+.form--button,.form--input{
+ font-size: clamp(1rem, 1.25vw,1.75rem);
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.form--input {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-indent: 5px;
+}
+
+.meme__text {
+  position: absolute;
+  flex-direction: column;
+  z-index: 1000;
+  color: white;
+text-shadow: 2px 2px 1px #000000;
+text-align: center;
+
+}
+
+
+.new-meme {
+  position: relative;
 }
