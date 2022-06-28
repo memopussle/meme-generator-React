@@ -4,7 +4,7 @@
 
 ![overview](./public/img/overview.png)
 
-![link to the project](https://capable-froyo-bc3292.netlify.app/)
+-> link to the project: https://capable-froyo-bc3292.netlify.app/
 
 #### Build your own gif meme! Customize your own text :) 
 
