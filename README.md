@@ -4,7 +4,9 @@
 
 ![overview](./public/img/overview.png)
 
-#### This project is a meme generator - which generates a random meme gif and allows the user to insert text suitable to the meme.
+![link to the project](https://capable-froyo-bc3292.netlify.app/)
+
+#### Build your own gif meme! Customize your own text :) 
 
 ## Goal of this exercise: 
 
