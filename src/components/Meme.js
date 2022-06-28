@@ -1,5 +1,4 @@
 import React from "react";
-import Memedata from "../Memedata";
 
 export default function Meme() {
   //an object meme hold 3 variables
@@ -8,17 +7,45 @@ export default function Meme() {
     bottomText: "",
     randomImage: "",
   });
-  const [allMemeImages, setAllMemeImages] = React.useState(Memedata);
+  const [allMemes, setAllMemes] = React.useState([]);
+
+  /*
+  useEffect takes a function as its parameter. If that function returns
+  something, it needs to be a CLEANUP function. Otherwise, it should 
+  return nothing. If we make it an async function, it automatically returns
+  a promise instead of a function or nothing. Therefore, if you want to use
+  async operations inside of useEffect, you need to define the function
+  seperately inside of the callback function, as seen below: 
+  */
+
+  React.useEffect(() => {
+    async function getMeme() {
+      const res = await fetch(
+        "https://api.giphy.com/v1/gifs/trending?api_key=laD2jrOSFN8gPwZ48M4RbION8F8ZPBmi&limit=100&rating=r"
+      );
+      const data = await res.json();
+      setAllMemes(data.data); // don't need a clean up function because we just make a call 1 time
+    }
+    getMeme();
+
+
+    /*fetch(
+      "https://api.giphy.com/v1/gifs/trending?api_key=laD2jrOSFN8gPwZ48M4RbION8F8ZPBmi&limit=100&rating=r"
+    )
+       .then((res) => res.json())
+   .then((data) => setAllMemes(data.data)); //data: the object */
+  }, []);
+
+  //useEffect will run [] first ->  run setAllMemes function -> run first function
 
   function getMemeImage() {
-    const memesArray = allMemeImages[0].data; //get meme data array
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].images.downsized_medium.url; // a random object
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+
+    const url = allMemes[randomNumber].images.downsized_medium.url;
     setMeme((prevMeme) => ({
-      ...prevMeme, //save topText and bottom Text values
+      ...prevMeme,
       randomImage: url,
-    })); // calling function setMemeImage
-    //replace previous state with a whole url
+    }));
   }
 
   function handleChange(event) {

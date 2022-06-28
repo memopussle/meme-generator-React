@@ -14,7 +14,9 @@
 
 - React forms, form inputs , form state , controlled inputs practice 
 
-## Technologies used: HTML, CSS, JavaScript, React
+## Technologies used: 
+- HTML, CSS, JavaScript, React using a third party API ![Giphy API](https://developers.giphy.com/)
+
 
 ## How to run this project in your local laptop/computer:
 
